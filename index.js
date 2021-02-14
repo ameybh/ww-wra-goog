@@ -1,14 +1,16 @@
 require('dotenv').config();
 const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
+
 // setup Wolfram|Alpha API
 const appid = process.env.APPID;
 const WolframAlphaAPI = require('./lib/WolframAlphaAPI.js');
 let wraAPI = WolframAlphaAPI(appid);
-const invokeKey = 'wra';
+const invokeKey = 'ros';
 
 const handleShort = require('./handlers/wra/short');
 const handleImage = require('./handlers/wra/image');
+const handleGoogle = require('./handlers/google/googleHandler');
 let sessionLocal = JSON.parse(process.env.WW_SESSION);
 console.log(sessionLocal);
 
@@ -39,9 +41,10 @@ client.on('ready', () => {
 });
 
 client.on('message_create', message => {
-    console.log('\n---\nNew Message at ' + String(Date()));
+    /*console.log('\n---\nNew Message at ' + String(Date()));
 	console.log('From me? ' + String(message.fromMe));
-	console.log(message.body);
+	console.log(message.body);*/
+	console.log(message);
     if (message.body.startsWith('!' + invokeKey + ' ')) {
         let text = message.body.substring(2 + invokeKey.length);
         console.log(text);
@@ -53,7 +56,11 @@ client.on('message_create', message => {
             console.log(`Querying text result for ${text}`);
             handleShort(message, text, wraAPI);
         }
-    }
+    } else if (message.body.startsWith('!google ')){
+	console.log("You asked Google");
+    const googleSearch = message.body.slice(8)
+	handleGoogle(message, googleSearch);
+}
 });
 
 client.initialize();
