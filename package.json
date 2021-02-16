@@ -25,7 +25,10 @@
     "google-it": "^1.6.1",
     "parse-data-url": "^3.0.0",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.12.4"
+    "whatsapp-web.js": "^1.12.4",
+    "follow-redirects": "^1.13.0",
+    "popyt": "^4.1.1",
+    "youtube-dl": "^3.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

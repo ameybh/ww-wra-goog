@@ -6,7 +6,7 @@ const handleImage = (message, text, wraAPI) => {
 		// send the rest of the message to Wolfram|Alpha API
 		wraAPI.getSimple({
 			i: text,
-			timeout: 2,
+			timeout: 10,
 		})
 			.then(res => {
                 const parsed = parseDataUrl(res);
