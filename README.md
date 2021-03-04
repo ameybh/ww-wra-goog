@@ -1,6 +1,6 @@
-# ww-bot-wra
+# ww-wra-goog
 
-WolramAlpha bot using [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) library.
+WolramAlpha and Google search bot using [whatsapp-web.js](https://github.com/pedroslopez/whatsapp-web.js) library.
 
 ## Installation
 
